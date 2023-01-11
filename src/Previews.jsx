@@ -1,4 +1,4 @@
-import {SimpleGrid,Image,ActionIcon,createStyles } from '@mantine/core';
+import {SimpleGrid,Image,ActionIcon,createStyles,LoadingOverlay, Progress } from '@mantine/core';
 import { IconX } from '@tabler/icons';
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
 
@@ -16,22 +16,25 @@ const useStyles = createStyles((theme) => ({
     }
 }));
 
-export function Previews({files,setFiles}) {
+export function Previews({files,setFiles,loading}) {
     console.log(files)
 
     const {classes} = useStyles();
 
     const previews = files.map((file, index) => {
         const imageUrl = URL.createObjectURL(file);
-        console.log(file.id)
+        // console.log(file.id)
         return (
             <CSSTransition in={true} timeout={300} classNames="alert" key={file.id} unmountOnExit>
                 <span className={classes.imageParent}>
+                    <LoadingOverlay visible={loading} overlayBlur={2} style={{padding: 10}} transitionDuration={300} exitTransitionDuration={300}/>
                     <Image
                         src={imageUrl}
                         imageProps={{ onLoad: () => URL.revokeObjectURL(imageUrl) }}
+
                     />
                     <ActionIcon
+                        display={loading ? "none" : "flex"}
                         variant="default"
                         radius="xl"  
                         className={classes.deleteBtn}    
@@ -39,20 +42,25 @@ export function Previews({files,setFiles}) {
                     >
                         <IconX size={16}/>
                     </ActionIcon>
+                    {/* <Progress style={{position: "absolute",bottom: 0,left: 0,right: 0,zIndex: 1000}} value={50} /> */}
                 </span>
             </CSSTransition>
         );
     });
     return (
-        <SimpleGrid
-            cols={4}
-            breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
-            mt={previews.length > 0 ? 'xl' : 0}
-        >
-            <TransitionGroup component={null}>
-                {previews}
-            </TransitionGroup>
-        </SimpleGrid>
+        <div style={{position: "relative"}}>
+            
+            <SimpleGrid
+                cols={4}
+                breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
+                mt={previews.length > 0 ? 'xl' : 0}
+            >
+                <TransitionGroup component={null}>
+                    {previews}
+                </TransitionGroup>
+            </SimpleGrid>
+        </div>
+
     )
 }
 

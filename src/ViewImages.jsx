@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { Header, Container,Text,createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 
 
@@ -62,13 +62,7 @@ export default function ViewImages({}) {
     // }, [width])
     return (
         <>
-        <Header height={56} mb={40}>
-            <Container style={{display: "flex", alignItems: "center", height: 56, justifyContent: "center"}}>
-                <Text size="xl" weight={700} color="white">
-                    Image Hosting
-                </Text>
-            </Container>
-        </Header>
+        
         <div style={{maxWidth: "90%", margin: "auto"}}>
             <ImageSquares images={images}/>
         </div>
