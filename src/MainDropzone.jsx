@@ -34,7 +34,7 @@ export function MainDropzone({onDrop,onReject}) {
             Drag images here or click to select files or paste images from clipboard <Kbd ml={10}>Ctrl</Kbd> + <Kbd>V</Kbd>
           </Text>
           <Text size="sm" color="dimmed" inline mt={7}>
-            Attach as many files as you like, each file should not exceed 5mb
+            Attach max 10 files, each file should not exceed 5mb
           </Text>
         </div>
       </Group>

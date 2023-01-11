@@ -2,23 +2,45 @@ import { useState } from 'react';
 import RightNavBarr from './RightNavBar';
 import MainDropzone from './MainDropzone';
 import Previews from './Previews';
-import { Card } from '@mantine/core';
+import { Button, Card } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
+
 import uuid from 'react-uuid';
+
+
 export function App() {
     const [files, setFiles] = useState([]);
-    const mySetFiles = (_files) => {
+    const appendFiles = (_files) => {
+        if (files.length + _files.length > 10) {
+            showNotification({
+                title: "Error",
+                message: "You can only upload 10 files at a time",
+                color: 'red',
+            })
+            return;
+        }
         _files = _files.map((file) => {
             file.id = uuid();
             return file;
         });
-        console.log(_files)
-        setFiles(_files);
+        
+        setFiles((prevFiles) => {
+            return prevFiles.concat(_files);
+        });
     }
     return (
         <div>
             <Card style={{maxWidth: 1000, margin: "0 auto",marginTop: 40}}>
-                <MainDropzone onDrop={mySetFiles} />
+                <MainDropzone onDrop={appendFiles} />
                 <Previews files={files} setFiles={setFiles}/>
+                {files.length > 0 ? 
+                <div style={{textAlign: "center",paddingTop: 20}}>
+                    <Button>
+                        Start Upload
+                    </Button>
+                </div>
+                : null}
+
             </Card>
             
         </div>
