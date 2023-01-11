@@ -4,7 +4,7 @@ import MainDropzone from './MainDropzone';
 import Previews from './Previews';
 import { Button, Card } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
-
+import {useHotkeys } from '@mantine/hooks';
 import uuid from 'react-uuid';
 
 
@@ -28,6 +28,20 @@ export function App() {
             return prevFiles.concat(_files);
         });
     }
+    useHotkeys([
+        ['ctrl+V', () => {
+            // get image from clipboard
+            navigator.clipboard.read().then((data) => {
+                const items = data.items;
+                for (const item of items) {
+                    if (item.kind === 'file') {
+                        const file = item.getAsFile();
+                        appendFiles([file]);
+                    }
+                }
+            });
+        }],
+      ]);
     return (
         <div>
             <Card style={{maxWidth: 1000, margin: "0 auto",marginTop: 40}}>
