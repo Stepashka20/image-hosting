@@ -1,5 +1,5 @@
 import { Header, Container,Text } from '@mantine/core';
-import image from "./assets/image.svg"
+import image from "../assets/image.svg"
 export default function TopHeader({}) {
     return (
         <Header height={56} mb={40}>

@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import RightNavBarr from './RightNavBar';
+
 import MainDropzone from './MainDropzone';
 import Previews from './Previews';
-import { Button, Card,Progress } from '@mantine/core';
+import { Button, Card } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import {useHotkeys } from '@mantine/hooks';
 import uuid from 'react-uuid';
 
-const MAIN_URL = "http://localhost:1234"
+const MAIN_URL = window.location.origin;
 
 export function App() {
     const [files, setFiles] = useState([]);

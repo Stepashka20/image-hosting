@@ -39,7 +39,7 @@ const useStyles = createStyles((theme) => ({
 
 
 
-const MAIN_URL = "http://localhost:1234"
+const MAIN_URL = window.location.origin;
 
 export default function ViewImages({}) {
     const {classes} = useStyles();
@@ -110,21 +110,8 @@ export default function ViewImages({}) {
     }
 
     return (
-        <>
-        
+        <>   
         <div style={{maxWidth: "90%", margin: "auto"}}>
-            {/* <div className={classes.imagesContainer}>
-                {images.map((image, index) => (
-                    <div
-                        key={index}
-                        className={classes.image}
-                        style={{ backgroundImage: `url(${image})` }}
-                        onClick={() => openImageViewer(index)}
-                    >
-                        <ActionIcon variant="default"><IconCopy size={16} /></ActionIcon>
-                    </div>
-                ))}
-            </div> */}
             <div className={classes.imagesContainer}>
                 {images.map((image, index) => (
                     <div key={index} className={classes.imageContainer}>
