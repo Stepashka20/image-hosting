@@ -23,7 +23,6 @@ export function Previews({files,setFiles,loading}) {
 
     const previews = files.map((file, index) => {
         const imageUrl = URL.createObjectURL(file);
-        // console.log(file.id)
         return (
             <CSSTransition in={true} timeout={300} classNames="alert" key={file.id} unmountOnExit>
                 <span className={classes.imageParent}>
@@ -42,7 +41,6 @@ export function Previews({files,setFiles,loading}) {
                     >
                         <IconX size={16}/>
                     </ActionIcon>
-                    {/* <Progress style={{position: "absolute",bottom: 0,left: 0,right: 0,zIndex: 1000}} value={50} /> */}
                 </span>
             </CSSTransition>
         );

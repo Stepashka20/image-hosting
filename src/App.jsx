@@ -7,6 +7,7 @@ import { showNotification } from '@mantine/notifications';
 import {useHotkeys } from '@mantine/hooks';
 import uuid from 'react-uuid';
 
+const MAIN_URL = "http://localhost:1234"
 
 export function App() {
     const [files, setFiles] = useState([]);
@@ -47,7 +48,35 @@ export function App() {
       ]);
     const startUpload = async () => {
         setLoading(true);
-        
+        setMaxProgress(files.length);
+        setProgress(0);
+        const formData = new FormData();
+        files.forEach((file) => {
+            formData.append("upload", file);
+        });
+        const response = await fetch(`${MAIN_URL}/api/upload`, {
+            method: "POST",
+            body: formData,
+        });
+        const data = await response.json();
+        if (response.ok) {
+            showNotification({
+                title: "Success",
+                message: "Files uploaded successfully",
+                color: 'green',
+            })
+            // navigate to /${data.key}
+            location.href = `/${data.key}`;
+        }
+        else {
+            showNotification({
+                title: "Error",
+                message: "Something went wrong",
+                color: 'red',
+            })
+        }
+        setFiles([]);
+        setLoading(false);
     }
     return (
         <div>

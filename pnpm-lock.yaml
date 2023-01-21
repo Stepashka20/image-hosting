@@ -14,11 +14,13 @@ specifiers:
   '@types/react': ^18.0.26
   '@types/react-dom': ^18.0.9
   '@vitejs/plugin-react': ^3.0.0
+  copy-image-clipboard: ^2.1.2
   embla-carousel-react: ^7.0.5
   react: ^18.2.0
   react-dom: ^18.2.0
   react-dropzone: ^14.2.3
   react-router-dom: ^6.6.2
+  react-simple-image-viewer: ^1.2.2
   react-transition-group: ^4.4.5
   react-uuid: ^2.0.0
   uuid: ^9.0.0
@@ -35,11 +37,13 @@ dependencies:
   '@mantine/notifications': 5.10.0_3m53ouna3laykmqkiimzgz4i2m
   '@mantine/prism': 5.10.0_3m53ouna3laykmqkiimzgz4i2m
   '@tabler/icons': 1.119.0_biqbaboplfbrettd7655fr4n2y
+  copy-image-clipboard: 2.1.2
   embla-carousel-react: 7.0.5_react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-dropzone: 14.2.3_react@18.2.0
   react-router-dom: 6.6.2_biqbaboplfbrettd7655fr4n2y
+  react-simple-image-viewer: 1.2.2_biqbaboplfbrettd7655fr4n2y
   react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
   react-uuid: 2.0.0
   uuid: 9.0.0
@@ -1016,6 +1020,10 @@ packages:
   /convert-source-map/1.9.0:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
 
+  /copy-image-clipboard/2.1.2:
+    resolution: {integrity: sha512-3VCXVl2IpFfOyD8drv9DozcNlwmqBqxOlsgkEGyVAzadjlPk1go8YNZyy8QmTnwHPxSFpeCR9OdsStEdVK7qDA==}
+    dev: false
+
   /cosmiconfig/7.1.0:
     resolution: {integrity: sha512-AdmX6xUzdNASswsFtmwSt7Vj8po9IuqXm0UXz7QKPuEUmPB4XyjGfaAr2PSuELMwkRMVH1EpIkX5bTZGRB3eCA==}
     engines: {node: '>=10'}
@@ -1342,6 +1350,16 @@ packages:
     dependencies:
       '@remix-run/router': 1.2.1
       react: 18.2.0
+    dev: false
+
+  /react-simple-image-viewer/1.2.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-Vk9p6Glm7uE4cSEBGkqZPGC3qoZcAwd48nq5/JN13NKd9rUrUIWZWFEmRzO+FVwl6c0UdjSDkthGoaoiYeWVjg==}
+    peerDependencies:
+      react: ^18.1.0
+      react-dom: ^18.1.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-textarea-autosize/8.3.4_kzbn2opkn2327fwg5yzwzya5o4:
